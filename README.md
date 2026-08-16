@@ -13,6 +13,7 @@ A modern and highly customizable player limit plugin for Velocity proxy servers.
 ## Commands
 
 - `/playerlimit <amount>` - Set a new player limit. (Setting to `0` removes the limit).
+- `/playerlimit info` - View the current player limit.
 - `/playerlimit reload` - Reloads the configuration and messages files.
 
 ## Permissions
@@ -33,7 +34,7 @@ limit_set: "&aPlayer limit has been set to: {limit}"
 current_limit: "&eCurrent player limit is: {limit}"
 negative_limit: "&cPlayer limit cannot be negative."
 invalid_number: "&cInvalid number provided."
-usage: "&cUsage: /playerlimit [amount | reload]"
+usage: "&cUsage: /playerlimit [amount | reload | info]"
 no_permission: "&cYou do not have permission to execute this command!"
 reload_success: "&aSuccessfully reloaded configuration and messages."
 ```

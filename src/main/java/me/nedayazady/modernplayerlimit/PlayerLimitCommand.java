@@ -35,6 +35,18 @@ public class PlayerLimitCommand implements SimpleCommand {
                 return;
             }
 
+            if (args[0].equalsIgnoreCase("info")) {
+                if (source.hasPermission("playerlimit.admin")) {
+                    int currentLimit = plugin.getPlayerLimit();
+                    String limitDisplay = currentLimit > 0 ? String.valueOf(currentLimit) : "Unlimited";
+                    String msg = plugin.getMessage("current_limit").replace("{limit}", limitDisplay);
+                    source.sendMessage(plugin.color(msg));
+                } else {
+                    source.sendMessage(plugin.color(plugin.getMessage("no_permission")));
+                }
+                return;
+            }
+
             try {
                 int newLimit = Integer.parseInt(args[0]);
                 if (newLimit < 0) {
@@ -65,6 +77,9 @@ public class PlayerLimitCommand implements SimpleCommand {
         if (args.length == 0 || args.length == 1) {
              if (invocation.source().hasPermission("playerlimit.reload")) {
                 suggestions.add("reload");
+             }
+             if (invocation.source().hasPermission("playerlimit.admin")) {
+                suggestions.add("info");
              }
         }
         return CompletableFuture.completedFuture(suggestions);
